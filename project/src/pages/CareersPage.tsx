@@ -46,7 +46,7 @@ export default function CareersPage() {
     });
 
     try {
-      const res = await fetch('http://localhost:5000/api/applications/submit', {
+      const res = await fetch('https://deploy-website-backend.onrender.com', {
         method: 'POST',
         body: formData,
         credentials: 'include',
