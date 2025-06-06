@@ -46,7 +46,7 @@ export default function CareersPage() {
     });
 
     try {
-      const res = await fetch('https://deploy-website-backend.onrender.com', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/submit`, {
         method: 'POST',
         body: formData,
         credentials: 'include',
