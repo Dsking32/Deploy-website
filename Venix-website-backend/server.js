@@ -19,7 +19,8 @@ app.use(cors({
     'http://localhost:5174', // ✅ No trailing slash', // Admin  
     'http://localhost:5173', // Vite
     'http://localhost:8080', // Vue
-    'https://deploy-website-project.onrender.com'
+    'https://deploy-website-project.onrender.com',
+    'https://deploy-website-hr-applications-admin.onrender.com' // ✅ admin frontend
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
