@@ -25,7 +25,7 @@ export default function AppPromo() {
       <Container className="relative z-10">
         <SectionHeading
           title="Inovate. Transform. Succeed"
-          subtitle="Download our award-winning mobile app and take control of your finances from anywhere, anytime."
+          subtitle="Enjoy seamless services."
           className="text-blue-900"
         />
         

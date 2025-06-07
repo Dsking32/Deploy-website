@@ -9,13 +9,13 @@ const services = [
   },
   {
     icon: <FaGamepad className="text-yellow-500 h-7 w-7" />,
-    title: "Mobile Gaming Services",
-    description: "Solutions for mobile game development, publishing, and distribution, offering gamers access to a variety of mobile games.",
+    title: "Turnaj Fantasy sports ",
+    description: "Offering gamers the opportunity to earn from football fantasy.",
   },
   {
     icon: <FaMusic className="text-yellow-500 h-7 w-7" />,
-    title: "Entertainment Services",
-    description: "Music and video content platforms designed to deliver quality entertainment to users.",
+    title: "Bingebay",
+    description: "video content platforms designed to deliver quality entertainment to users.",
   },
   {
     icon: <FaNewspaper className="text-yellow-500 h-7 w-7" />,
@@ -29,12 +29,12 @@ const services = [
   },
   {
     icon: <FaSms className="text-yellow-500 h-7 w-7" />,
-    title: "Bulk SMS Aggregator Platform",
+    title: "Mesaj",
     description: "Cost-effective and efficient bulk messaging services for businesses and organizations.",
   },
   {
     icon: <FaNetworkWired className="text-yellow-500 h-7 w-7" />,
-    title: "Telecommunication Network Services",
+    title: "IVR and Voice otp services",
     description: "Infrastructure, connectivity, and managed telecom services tailored for operators and enterprises.",
   },
   {

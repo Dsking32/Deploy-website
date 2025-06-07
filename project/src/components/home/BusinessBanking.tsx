@@ -32,7 +32,7 @@ export default function BusinessBanking() {
           <div className="animate-on-scroll">
             <div className="mb-6">
               <span className="bg-secondary-100 text-secondary-700 text-sm font-medium px-3 py-1 rounded-full">
-                Business Banking
+                Business solutions
               </span>
             </div>
             

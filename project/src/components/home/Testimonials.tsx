@@ -12,7 +12,7 @@ export default function Testimonials() {
       image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     },
     {
-      quote: "Mesaj just transformed by business from 100 customers to 2000 customers via SMS campaign",
+      quote: "Mesaj just transformed my business from 100 customers to 2000 customers via SMS campaign",
       author: "Michael Ben",
       position: "CEO Michael stiches",
       company: "Michael stiches.",
