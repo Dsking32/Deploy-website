@@ -21,30 +21,32 @@ interface ApplicationCardProps {
 
 export const ApplicationCard = ({ application }: ApplicationCardProps) => {
   const handleDownloadCV = async () => {
-  try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/download-cv/${application.id}`, {
-      method: 'GET',
-    });
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/applications/download-cv/${application.id}`,
+        {
+          method: 'GET',
+        }
+      );
 
-    if (!response.ok) {
-      throw new Error('Failed to download CV');
+      if (!response.ok) {
+        throw new Error('Failed to download CV');
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${application.firstName}_${application.lastName}_CV.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('CV download error:', error);
+      alert('Failed to download CV. Please try again.');
     }
-
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `${application.firstName}_${application.lastName}_CV.pdf`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
-  } catch (error) {
-    console.error('CV download error:', error);
-    alert('Failed to download CV. Please try again.');}
-}
-};
-    
+  };
 
   return (
     <Card className="card-hover border-l-4 border-l-gradient-to-b from-blue-500 to-purple-500 bg-white/80 backdrop-blur-sm">
