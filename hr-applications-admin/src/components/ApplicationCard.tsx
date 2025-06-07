@@ -22,7 +22,7 @@ interface ApplicationCardProps {
 export const ApplicationCard = ({ application }: ApplicationCardProps) => {
   const handleDownloadCV = async () => {
   try {
-    const response = await fetch(`http://localhost:5000/api/applications/download-cv/${application.id}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/download-cv/${application.id}`, {
       method: 'GET',
     });
 
@@ -34,8 +34,6 @@ export const ApplicationCard = ({ application }: ApplicationCardProps) => {
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-
-    // Ensure file has a default name
     link.download = `${application.firstName}_${application.lastName}_CV.pdf`;
     document.body.appendChild(link);
     link.click();
@@ -43,8 +41,8 @@ export const ApplicationCard = ({ application }: ApplicationCardProps) => {
     window.URL.revokeObjectURL(url);
   } catch (error) {
     console.error('CV download error:', error);
-    alert('Failed to download CV. Please try again.');
-  }
+    alert('Failed to download CV. Please try again.');}
+}
 };
     
 
