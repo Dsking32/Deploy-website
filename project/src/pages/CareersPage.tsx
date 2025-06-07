@@ -32,42 +32,48 @@ export default function CareersPage() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
 
-    const formData = new FormData();
-    Object.entries(form).forEach(([key, value]) => {
-      if (key === 'cv' && value instanceof File) {
-        formData.append(key, value);
-      } else if (typeof value === 'string') {
-        formData.append(key, value);
-      }
+  console.log("ENV URL:", import.meta.env.VITE_API_URL);
+
+  const formData = new FormData();
+  Object.entries(form).forEach(([key, value]) => {
+    if (key === 'cv' && value instanceof File) {
+      formData.append(key, value);
+    } else if (typeof value === 'string') {
+      formData.append(key, value);
+    }
+  });
+
+  try {
+    const url = `${import.meta.env.VITE_API_URL}/api/applications/submit`;
+    console.log("Submitting to:", url); // <== 🔍 Key line
+
+    const res = await fetch(url, {
+      method: 'POST',
+      body: formData,
+      credentials: 'include',
     });
 
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/applications/submit`, {
-        method: 'POST',
-        body: formData,
-        credentials: 'include',
-      });
+    const data = await res.json();
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        alert(data?.errors?.[0]?.msg || data?.message || 'Submission failed.');
-        setLoading(false);
-        return;
-      }
-
-      setSubmitted(true);
-    } catch (error) {
-      console.error('Error submitting application:', error);
-      alert('Network error. Please try again later.');
-    } finally {
+    if (!res.ok) {
+      alert(data?.errors?.[0]?.msg || data?.message || 'Submission failed.');
       setLoading(false);
+      return;
     }
-  };
+
+    setSubmitted(true);
+  } catch (error) {
+    console.error('Error submitting application:', error);
+    alert('Network error. Please try again later.');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="pt-32 min-h-screen bg-gradient-to-br from-yellow-400 to-yellow-100">
