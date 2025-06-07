@@ -112,19 +112,23 @@ const downloadCV = async (req, res) => {
       });
     }
 
-    const filePath = path.join(__dirname, '..', 'uploads', application.cv.filename);
+    const filename = application.cv.filename;
+    const originalName = application.cv.originalName || filename;
+
+    // Use absolute path based on server's directory
+    const filePath = path.join(__dirname, '..', 'uploads', filename);
 
     if (!fs.existsSync(filePath)) {
-  return res.status(404).json({
-    success: false,
-    message: 'File does not exist on server',
-  });
-}
+      return res.status(404).json({
+        success: false,
+        message: 'File does not exist on server',
+      });
+    }
 
-res.download(filePath, application.cv.originalName);
+    return res.download(filePath, originalName);
   } catch (error) {
     console.error('Error downloading CV:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: 'Error downloading CV',
       error: error.message,
