@@ -117,6 +117,7 @@ const downloadCV = async (req, res) => {
 
     // Use absolute path based on server's directory
     const filePath = path.join(__dirname, '..', 'uploads', filename);
+    console.log('Looking for CV at:', filePath);
 
     if (!fs.existsSync(filePath)) {
       return res.status(404).json({
